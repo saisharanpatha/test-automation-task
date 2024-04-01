@@ -27,6 +27,12 @@ jobs:
         distribution: 'temurin'
 
         cache: maven
+    - name: Set WebDriverManager Path 
+      run: |
+          echo "webdrivermanager.chromedriver.binary.path=/src/main" >> $GITHUB_ENV
+
+    - name: Install WebDriverManager
+      run: npm install webdrivermanager
 
     - name: Build with Maven
 
