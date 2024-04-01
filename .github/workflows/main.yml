@@ -17,13 +17,14 @@ on:
         - chrome-headless
 
 jobs:
-
   test:
-    runs-on: ${{ github.event.inputs.Browser}} == 'chrome-headless' ? 'ubuntu-latest':'macos-latest'
-
-
+    runs-on: |
+      if [ "${{ github.event.inputs.TestType }}" == "chrome-headless" ]; then
+       ubuntu-latest
+      else 
+       macos-latest
+      fi
     steps:
-
     - uses: actions/checkout@v3
 
     - name: Set up JDK 11
@@ -37,21 +38,9 @@ jobs:
         distribution: 'temurin'
 
         cache: maven
-    - name: Check if Chrome is installed
-      run: google-chrome --version
-
-    - name: Check Chrome binary path
-      run: which google-chrome
-      
-    - name: Change permissions for Chrome binary
-      run: sudo chmod +x /usr/bin/google-chrome
-      
-    #- name: Set WebDriverManager Path 
-     # run: |
-      #    echo "webdrivermanager.chromedriver.binary.path=/src/main" >> $GITHUB_ENV
-
-    #- name: Install WebDriverManager
-     # run: yarn add webdriver-manager
+    - name: Print OS details
+      run: |
+        echo "OS Name: ${{ runner.os }}"
 
     - name: Build with Maven
 
