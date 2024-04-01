@@ -18,11 +18,7 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ${{  if eq(github.event.inputs.Browser, 'chrome-headless') then 'ubuntu-latest' else 'macos-latest' endif }}
+    runs-on: ${{ if eq(github.event.inputs.Browser, 'chrome-headless') then 'ubuntu-latest' else 'macos-latest' endif }}
       
     steps:
     - uses: actions/checkout@v3
