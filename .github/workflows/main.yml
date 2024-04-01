@@ -32,8 +32,10 @@ jobs:
 
     - name: Check Chrome binary path
       run: which google-chrome
+      
     - name: Change permissions for Chrome binary
-      run: sudo chmod +x /path/to/google-chrome
+      run: sudo chmod +x /usr/bin/google-chrome
+      
     #- name: Set WebDriverManager Path 
      # run: |
       #    echo "webdrivermanager.chromedriver.binary.path=/src/main" >> $GITHUB_ENV
