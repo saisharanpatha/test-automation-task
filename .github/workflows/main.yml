@@ -4,13 +4,24 @@ on:
 
   workflow_dispatch:
 
-    branches: [ main ]
+    inputs:
+    Browser:
+        type: choice
+        description: 'Browser'
+        required: true
+        default: 'chrome-headless'
+        options: 
+        - chrome
+        - firefox
+        - chrome-sm
+        - chrome-headless
 
 jobs:
 
   test:
+    
+    runs-on: ${{ github.event.inputs.Browser == 'chrome-headless' ? 'ubuntu-latest':'macos-latest' }}
 
-    runs-on: ubuntu-latest
 
     steps:
 
