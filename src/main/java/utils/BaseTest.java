@@ -21,7 +21,9 @@ public class BaseTest {
     protected void beforeClass() {
         System.out.println("Before Class");
         baseUrl = "https://www.yavlena.com/broker/";
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.get(baseUrl);
         driver.manage().window().maximize();
         brokerPage = new BrokerPage(driver);
