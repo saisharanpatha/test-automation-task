@@ -19,8 +19,7 @@ on:
 jobs:
 
   test:
-    
-    runs-on: ${{ github.event.inputs.Browser == 'chrome-headless' ? 'ubuntu-latest':'macos-latest' }}
+    runs-on: ${{ github.event.inputs.Browser}} == 'chrome-headless' ? 'ubuntu-latest':'macos-latest'
 
 
     steps:
