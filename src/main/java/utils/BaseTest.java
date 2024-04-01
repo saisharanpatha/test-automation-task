@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pages.BrokerPage;
 
 public class BaseTest {
