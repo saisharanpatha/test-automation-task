@@ -18,12 +18,12 @@ on:
 
 jobs:
   test:
-    runs-on: |
-      if [ "${{ github.event.inputs.TestType }}" == "chrome-headless" ]; then
-       ubuntu-latest
-      else 
-       macos-latest
-      fi
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ${{  if eq(github.event.inputs.Browser, 'chrome-headless') then 'ubuntu-latest' else 'macos-latest' endif }}
+      
     steps:
     - uses: actions/checkout@v3
 
@@ -40,7 +40,11 @@ jobs:
         cache: maven
     - name: Print OS details
       run: |
-        echo "OS Name: ${{ runner.os }}"
+        if [ "${{ runner.os }}" == "macos-latest" ]; then
+          echo "Hello World"
+        else
+          echo "Hello Linux"
+        fi
 
     - name: Build with Maven
 
