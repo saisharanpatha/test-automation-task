@@ -4,7 +4,7 @@ on:
 
   workflow_dispatch:
 
-    inputs:
+   inputs:
     Browser:
         type: choice
         description: 'Browser'
