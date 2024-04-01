@@ -32,7 +32,7 @@ jobs:
           echo "webdrivermanager.chromedriver.binary.path=/src/main" >> $GITHUB_ENV
 
     - name: Install WebDriverManager
-      run: yarn add webdrivermanager
+      run: yarn add webdriver-manager
 
     - name: Build with Maven
 
