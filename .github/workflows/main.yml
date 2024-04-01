@@ -27,12 +27,19 @@ jobs:
         distribution: 'temurin'
 
         cache: maven
-    - name: Set WebDriverManager Path 
-      run: |
-          echo "webdrivermanager.chromedriver.binary.path=/src/main" >> $GITHUB_ENV
+    - name: Check if Chrome is installed
+      run: google-chrome --version
 
-    - name: Install WebDriverManager
-      run: yarn add webdriver-manager
+    - name: Check Chrome binary path
+      run: which google-chrome
+    - name: Change permissions for Chrome binary
+      run: sudo chmod +x /path/to/google-chrome
+    #- name: Set WebDriverManager Path 
+     # run: |
+      #    echo "webdrivermanager.chromedriver.binary.path=/src/main" >> $GITHUB_ENV
+
+    #- name: Install WebDriverManager
+     # run: yarn add webdriver-manager
 
     - name: Build with Maven
 
