@@ -33,13 +33,6 @@ jobs:
         distribution: 'temurin'
 
         cache: maven
-    - name: Print OS details
-      run: |
-        if [ "${{ runner.os }}" == "macos-latest" ]; then
-          echo "Hello World"
-        else
-          echo "Hello Linux"
-        fi
 
     - name: Build with Maven
 
